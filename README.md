@@ -186,20 +186,21 @@ The final state of the file should be as follows (replacing the "Created by" inf
 Exercise for MSCH-C220
 
 An implementation of a procedurally-generated 3D maze. Also, a simple in-game menu.
+<<<<<<< HEAD
+=======
+# 3D-Game
+3D game project for class
+A simple 3D game
 
 ## Implementation
 
-Built using Godot 4.1.1
+## What Makes this a Game?
 
 ## References
 
-This project is an adaptation of the excellent tutorial from [KidsCanCode](https://kidscancode.org/blog/2018/08/godot3_procgen1/)
-
 ## Future Development
-
 None
 
-## Created by 
-
-Jason Francis
-```
+## Created by
+Luca Arana
+>>>>>>> 385747baadc3ef04d0f72bd51c810d595ad5bb0c
