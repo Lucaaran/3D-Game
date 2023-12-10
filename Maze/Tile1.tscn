@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccmou1buv045e"]
+[gd_scene load_steps=9 format=3 uid="uid://ccmou1buv045e"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jb6vw"]
-albedo_color = Color(0.807843, 0.831373, 0.854902, 1)
+[ext_resource type="Material" uid="uid://dr8rmy3g66wta" path="res://Maze/Wall.tres" id="1_iw7iu"]
+[ext_resource type="Texture2D" uid="uid://lkws3fcykxnp" path="res://Assets/696.jpg" id="1_wab74"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_g4peh"]
+vertices = PackedVector3Array(-0.5, 0.45, -0.3, -0.5, 0.45, 0.45, 0.5, 0.45, 0.45, 0.5, 0.45, -0.3)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_var6h"]
-material = SubResource("StandardMaterial3D_jb6vw")
+material = ExtResource("1_iw7iu")
 size = Vector3(2, 2, 0.1)
 
 [sub_resource type="BoxShape3D" id="3"]
@@ -12,6 +16,7 @@ size = Vector3(2, 2, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htfpx"]
 albedo_color = Color(0.286275, 0.313726, 0.341176, 1)
+albedo_texture = ExtResource("1_wab74")
 
 [sub_resource type="BoxMesh" id="BoxMesh_jnkvy"]
 material = SubResource("StandardMaterial3D_htfpx")
@@ -22,18 +27,21 @@ size = Vector3(2, 0.1, 2)
 
 [node name="Tile" type="Node3D"]
 
-[node name="StaticBody" type="StaticBody3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_g4peh")
 
-[node name="N" type="MeshInstance3D" parent="StaticBody"]
+[node name="StaticBody" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="N" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 mesh = SubResource("BoxMesh_var6h")
 
-[node name="N_Collision" type="CollisionShape3D" parent="StaticBody"]
+[node name="N_Collision" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 shape = SubResource("3")
 
-[node name="Ground" type="MeshInstance3D" parent="StaticBody"]
+[node name="Ground" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody"]
 mesh = SubResource("BoxMesh_jnkvy")
 
-[node name="Ground_Collision" type="CollisionShape3D" parent="StaticBody"]
+[node name="Ground_Collision" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody"]
 shape = SubResource("12")

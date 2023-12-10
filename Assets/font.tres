@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://csmo57av875f3"]
+
+[ext_resource type="FontFile" uid="uid://denqw4xo0sw83" path="res://Assets/Crang.ttf" id="1_q33b0"]
+
+[resource]
+default_font = ExtResource("1_q33b0")
